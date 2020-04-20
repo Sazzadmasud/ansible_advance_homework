@@ -4,6 +4,9 @@
   yum:
     name:
       - python-pip
+  vars:
+    ansible_python_interpreter: /usr/bin/python
+
 - name: Install openstacksdk library
   pip:
     name: openstacksdk
@@ -21,10 +24,10 @@
             password: r3dh4t1!
             project_name: admin
             username: admin
-          identity_api_version: '3.0'
+          identity_api_version: '3'
           region_name: RegionOne
 - name: Set openstack.pub authorized key from file
   authorized_key:
     user: cloud-user
     state: present
-    key: "{{ lookup('file', '/root/.ssh/openstack.pub') }}"
+    key: "{{ lookup('file', '/home/samasud-redhat.com/.ssh/openstack.pub') }}"
