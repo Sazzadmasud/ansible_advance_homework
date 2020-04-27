@@ -1,6 +1,4 @@
 - hosts: workstation
   become: yes
-  vars:
-    ansible_python_interpreter: /usr/bin/python3.7
   roles:
     - osp-servers
