@@ -1,0 +1,30 @@
+[GenericExample:vars]
+
+###########################################################################
+### Ansible Vars
+###########################################################################
+timeout=60
+ansible_become=yes
+ansible_user=ec2-user
+
+
+[GenericExample:children]
+towers
+support
+
+[towers]
+## These are the towers
+tower1.a4c8.internal public_host_name=tower1.a4c8.example.opentlc.com ssh_host=tower2.a4c8.internal
+tower2.a4c8.internal public_host_name=tower2.a4c8.example.opentlc.com ssh_host=tower1.a4c8.internal
+tower3.a4c8.internal public_host_name=tower3.a4c8.example.opentlc.com ssh_host=tower3.a4c8.internal
+
+
+
+
+## These are the supporthosts
+[support]
+support1.a4c8.internal ssh_host=support1.a4c8.internal
+support2.a4c8.internal ssh_host=support2.a4c8.internal
+
+[workstation]
+workstation-68be.rhpds.opentlc.com
